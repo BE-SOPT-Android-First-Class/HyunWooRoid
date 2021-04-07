@@ -8,6 +8,7 @@ object Versions {
     const val constraint_layout_version = "2.0.4"
 
     const val gradle_version = "4.1.3"
+    const val ktlint_version = "10.0.0"
 
     const val junit_version = "4.13.2"
     const val espresso_version = "3.3.0"
