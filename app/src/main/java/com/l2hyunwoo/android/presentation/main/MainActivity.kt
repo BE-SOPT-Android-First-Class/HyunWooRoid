@@ -1,7 +1,8 @@
-package com.l2hyunwoo.android
+package com.l2hyunwoo.android.presentation.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.l2hyunwoo.android.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
