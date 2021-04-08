@@ -6,6 +6,7 @@ object Versions {
     const val appcompat_version = "1.2.0"
     const val material_design_version = "1.3.0"
     const val constraint_layout_version = "2.0.4"
+    const val hilt_version = "2.33-beta"
 
     const val gradle_version = "4.1.3"
     const val ktlint_version = "10.0.0"

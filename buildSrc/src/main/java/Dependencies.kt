@@ -7,6 +7,7 @@ object AndroidXDependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appcompat_version}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout_version}"
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hilt_version}"
 }
 
 object TestDependencies {
@@ -15,7 +16,15 @@ object TestDependencies {
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso_version}"
 }
 
+object ClassPathDependencies {
+    const val hilt = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt_version}"
+}
+
 object MaterialDesignDependencies {
     const val materialDesign =
         "com.google.android.material:material:${Versions.material_design_version}"
+}
+
+object KaptDependencies {
+    const val hilt = "com.google.dagger:hilt-compiler:${Versions.hilt_version}"
 }
