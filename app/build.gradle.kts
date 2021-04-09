@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -46,6 +48,23 @@ dependencies {
     implementation(AndroidXDependencies.coreKtx)
     implementation(MaterialDesignDependencies.materialDesign)
     implementation(AndroidXDependencies.constraintLayout)
+
+    // Hilt
+    implementation(AndroidXDependencies.hilt)
+    kapt(KaptDependencies.hilt)
+
+    // DataStore
+    implementation(AndroidXDependencies.dataStore)
+    implementation(AndroidXDependencies.dataStoreCore)
+
+    // Android KTX
+    implementation(AndroidXDependencies.fragmentKtx)
+    implementation(AndroidXDependencies.activityKtx)
+    implementation(AndroidXDependencies.viewModelKtx)
+
+    // Glide
+    implementation(ThirdPartyDependencies.glide)
+    kapt(KaptDependencies.glideCompiler)
 
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)

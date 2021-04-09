@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FormEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/form_background</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:layout_marginHorizontal">24dp</item>
+        <item name="android:paddingVertical">16dp</item>
+    </style>
+
+    <style name="NoMarginButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+</resources>

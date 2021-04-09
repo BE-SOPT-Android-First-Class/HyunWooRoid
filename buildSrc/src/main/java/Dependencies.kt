@@ -7,6 +7,16 @@ object AndroidXDependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appcompat_version}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout_version}"
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hilt_version}"
+    const val dataStore = "androidx.datastore:datastore-preferences:${Versions.datastore_version}"
+    const val dataStoreCore =
+        "androidx.datastore:datastore-preferences-core:${Versions.datastore_version}"
+    const val viewModelKtx =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_ktx_version}"
+    const val activityKtx =
+        "androidx.activity:activity-ktx:${Versions.activity_ktx}"
+    const val fragmentKtx =
+        "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}"
 }
 
 object TestDependencies {
@@ -15,7 +25,20 @@ object TestDependencies {
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso_version}"
 }
 
+object ClassPathDependencies {
+    const val hilt = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hilt_version}"
+}
+
 object MaterialDesignDependencies {
     const val materialDesign =
         "com.google.android.material:material:${Versions.material_design_version}"
+}
+
+object KaptDependencies {
+    const val hilt = "com.google.dagger:hilt-compiler:${Versions.hilt_version}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide_compiler_version}"
+}
+
+object ThirdPartyDependencies {
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide_version}"
 }
