@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.l2hyunwoo.android.presentation.main.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +22,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="40dp"
+            srcFromUrl="@{viewModel.profileUrl}"
             tools:src="@drawable/ic_github_logo"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -30,6 +33,7 @@
             android:layout_marginTop="24dp"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:text="Github ID: l2hyunwoo"
             app:layout_constraintTop_toBottomOf="@+id/img_main_profile"
             app:layout_constraintEnd_toEndOf="@+id/img_main_profile"
             app:layout_constraintStart_toStartOf="@+id/img_main_profile"
@@ -40,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            tools:text="Android Developer"
+            android:text="Android Developer"
             app:layout_constraintTop_toBottomOf="@+id/txt_main_id"
             app:layout_constraintEnd_toEndOf="@+id/txt_main_id"
             app:layout_constraintStart_toStartOf="@+id/txt_main_id" />

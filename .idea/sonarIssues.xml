@@ -103,6 +103,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/main/HomeViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/main/MainActivity.kt">
           <value>
             <set />
@@ -129,6 +134,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/signup/SignUpViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/util/BindingAdapters.kt">
           <value>
             <set />
           </value>

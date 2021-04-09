@@ -52,7 +52,9 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
             is Inconsistent -> toast("ID와 비밀번호가 일치하지 않습니다.")
             is Valid -> {
                 val intent = Intent(this, MainActivity::class.java)
+                toast("로그인이 되었습니다.")
                 startActivity(intent)
+                finish()
             }
         }
     }

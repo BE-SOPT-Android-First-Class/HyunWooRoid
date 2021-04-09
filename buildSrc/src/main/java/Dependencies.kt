@@ -9,7 +9,8 @@ object AndroidXDependencies {
         "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout_version}"
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt_version}"
     const val dataStore = "androidx.datastore:datastore-preferences:${Versions.datastore_version}"
-    const val dataStoreCore = "androidx.datastore:datastore-preferences-core:${Versions.datastore_version}"
+    const val dataStoreCore =
+        "androidx.datastore:datastore-preferences-core:${Versions.datastore_version}"
     const val viewModelKtx =
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle_ktx_version}"
     const val activityKtx =
@@ -35,4 +36,9 @@ object MaterialDesignDependencies {
 
 object KaptDependencies {
     const val hilt = "com.google.dagger:hilt-compiler:${Versions.hilt_version}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide_compiler_version}"
+}
+
+object ThirdPartyDependencies {
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide_version}"
 }

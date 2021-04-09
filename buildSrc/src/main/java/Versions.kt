@@ -15,6 +15,9 @@ object Versions {
     const val gradle_version = "4.1.3"
     const val ktlint_version = "10.0.0"
 
+    const val glide_version = "4.12.0"
+    const val glide_compiler_version = "4.11.0"
+
     const val junit_version = "4.13.2"
     const val espresso_version = "3.3.0"
     const val android_test_version = "1.1.2"

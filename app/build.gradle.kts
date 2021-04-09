@@ -62,6 +62,10 @@ dependencies {
     implementation(AndroidXDependencies.activityKtx)
     implementation(AndroidXDependencies.viewModelKtx)
 
+    // Glide
+    implementation(ThirdPartyDependencies.glide)
+    kapt(KaptDependencies.glideCompiler)
+
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
     androidTestImplementation(TestDependencies.espresso)
