@@ -55,6 +55,7 @@ dependencies {
 
     // DataStore
     implementation(AndroidXDependencies.dataStore)
+    implementation(AndroidXDependencies.dataStoreCore)
 
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
