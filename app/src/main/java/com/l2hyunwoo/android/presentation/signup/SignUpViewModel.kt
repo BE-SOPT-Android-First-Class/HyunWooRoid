@@ -1,12 +1,17 @@
 package com.l2hyunwoo.android.presentation.signup
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.l2hyunwoo.android.domain.entity.UserInfo
 import com.l2hyunwoo.android.domain.repository.SignUpRepository
+import com.l2hyunwoo.android.presentation.util.SingleLiveEvent
 import com.l2hyunwoo.android.presentation.util.addSourceList
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,9 +22,24 @@ class SignUpViewModel @Inject constructor(
     val inputPassword = MutableLiveData<String>()
     private val inputIdLength = Transformations.map(inputId) { it.length }
     private val inputPasswordLength = Transformations.map(inputPassword) { it.length }
+    private val _signUpEvent = SingleLiveEvent<Unit>()
+    val signUpEvent: LiveData<Unit>
+        get() = _signUpEvent
 
     val isSignUpButtonClickable = MediatorLiveData<Boolean>().apply {
-        addSourceList(inputId, inputPassword) { canSignUp() }
+        addSourceList(inputIdLength, inputPasswordLength) { canSignUp() }
+    }
+
+    fun signUp() {
+        viewModelScope.launch {
+            signUpRepository.signUp(
+                UserInfo(
+                    id = inputId.value ?: "",
+                    password = inputPassword.value ?: ""
+                )
+            )
+            _signUpEvent.call()
+        }
     }
 
     private fun canSignUp() =

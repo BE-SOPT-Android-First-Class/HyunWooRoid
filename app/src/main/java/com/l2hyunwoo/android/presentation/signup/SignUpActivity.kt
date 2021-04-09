@@ -1,5 +1,7 @@
 package com.l2hyunwoo.android.presentation.signup
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.l2hyunwoo.android.R
@@ -14,5 +16,14 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
         binding.viewModel = signUpViewModel
+        subscribeEvent()
+    }
+
+    private fun subscribeEvent() {
+        signUpViewModel.signUpEvent.observe(this) {
+            val intent = Intent()
+            setResult(Activity.RESULT_OK, intent)
+            finish()
+        }
     }
 }
