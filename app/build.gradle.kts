@@ -52,6 +52,9 @@ dependencies {
     implementation(AndroidXDependencies.hilt)
     kapt(KaptDependencies.hilt)
 
+    // DataStore
+    implementation(AndroidXDependencies.dataStore)
+
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
     androidTestImplementation(TestDependencies.espresso)

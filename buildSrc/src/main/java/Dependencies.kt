@@ -8,6 +8,8 @@ object AndroidXDependencies {
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout_version}"
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt_version}"
+    const val dataStore = "androidx.datastore:datastore-preferences:${Versions.datastore_version}"
+    const val dataStoreCore = "androidx.datastore:datastore-preferences-core:${Versions.datastore_version}"
 }
 
 object TestDependencies {
