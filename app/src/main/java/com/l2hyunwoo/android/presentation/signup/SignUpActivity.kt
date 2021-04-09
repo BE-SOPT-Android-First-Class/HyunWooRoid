@@ -16,6 +16,7 @@ class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
         binding.viewModel = signUpViewModel
+        LifeCycleEventLogger(javaClass.simpleName).log()
         subscribeEvent()
     }
 

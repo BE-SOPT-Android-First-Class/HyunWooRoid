@@ -12,5 +12,6 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
         binding.viewModel = homeViewModel
+        LifeCycleEventLogger(javaClass.simpleName).log()
     }
 }

@@ -20,6 +20,7 @@ class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
         binding.viewModel = signInViewModel
+        LifeCycleEventLogger(javaClass.simpleName).log()
         initView()
     }
 
