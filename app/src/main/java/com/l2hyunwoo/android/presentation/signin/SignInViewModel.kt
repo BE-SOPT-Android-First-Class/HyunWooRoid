@@ -29,12 +29,16 @@ class SignInViewModel @Inject constructor(
                     password = inputPassword.value ?: ""
                 )
             )
-            when (result.message) {
-                "로그인 성공" -> _loginResult.value = Valid
-                "회원정보가 일치하지 않습니다." -> _loginResult.value = Inconsistent
-                "Id doesn't exist" -> _loginResult.value = NoneId
-                else -> throw IllegalStateException("The corresponding state does not exist")
-            }
+            handleMessage(result.message)
+        }
+    }
+
+    private fun handleMessage(message: String) {
+        when (message) {
+            "로그인 성공" -> _loginResult.value = Valid
+            "회원정보가 일치하지 않습니다." -> _loginResult.value = Inconsistent
+            "Id doesn't exist" -> _loginResult.value = NoneId
+            else -> throw IllegalStateException("The corresponding state does not exist")
         }
     }
 }

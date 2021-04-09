@@ -128,6 +128,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/signup/SignUpViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/util/LiveDataUtil.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/util/ToastUtil.kt">
           <value>
             <set />
@@ -139,6 +149,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/res/drawable/form_background.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/drawable/signup_button_background.xml">
           <value>
             <set />
           </value>
