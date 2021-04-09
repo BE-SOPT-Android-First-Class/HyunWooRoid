@@ -108,12 +108,27 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/signin/SIgnInViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/signin/SignInActivity.kt">
           <value>
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/signin/SignInViewModel.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/signup/SignUpActivity.kt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/l2hyunwoo/android/presentation/util/ToastUtil.kt">
           <value>
             <set />
           </value>
@@ -194,6 +209,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../SpoonWeathercast/app/build.gradle.kts">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../SpoonWeathercast/app/src/main/java/co/spoonradio/recruit/presentation/city/CityViewModel.kt">
           <value>
             <set />
           </value>

@@ -57,6 +57,11 @@ dependencies {
     implementation(AndroidXDependencies.dataStore)
     implementation(AndroidXDependencies.dataStoreCore)
 
+    // Android KTX
+    implementation(AndroidXDependencies.fragmentKtx)
+    implementation(AndroidXDependencies.activityKtx)
+    implementation(AndroidXDependencies.viewModelKtx)
+
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
     androidTestImplementation(TestDependencies.espresso)
