@@ -21,6 +21,9 @@
 
 ## 1주차 과제 (LEVEL 1, 2, 3 완료)
 
+### 화면캡쳐
+<img src="https://user-images.githubusercontent.com/54518925/114260620-0e4d4a80-9a11-11eb-9529-baaf746a73ff.gif" width="30%" />
+
 ### 생명주기를 Log로 호출하는 법 - LifeCycleObserver를 사용
 - Activity/Fragment와 같은 Component의 Lifecycle은 Android Jetpack에서 제공하는 **LifeCycleObserver를 활용하여 구현하였다**
 - Activity의 Lifecycle을 LifeCycleEventLogger에 집어넣어서 생명주기 Event가 변할 때마다 로그를 찍게 설정
