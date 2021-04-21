@@ -10,8 +10,9 @@
         - LiveData
         - LifeCycleObserver
     - DataStore
-    - Dagger-Hilt
+    - Dagger-Hilt [WEEK 1]
     - DataBinding
+- Dagger2(AndroidDagger)
 - Android KTX
 - Coroutine
 - Glide
