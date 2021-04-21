@@ -11,7 +11,8 @@ object Versions {
     const val lifecycle_ktx_version = "2.2.0"
     const val activity_ktx = "1.2.1"
     const val fragment_ktx = "1.3.1"
-
+    const val dagger_version = "2.34"
+    
     const val gradle_version = "4.1.3"
     const val ktlint_version = "10.0.0"
 

@@ -37,8 +37,13 @@ object MaterialDesignDependencies {
 object KaptDependencies {
     const val hilt = "com.google.dagger:hilt-compiler:${Versions.hilt_version}"
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide_compiler_version}"
+    const val dagger = "com.google.dagger:dagger-compiler:${Versions.dagger_version}"
+    const val daggerAndroidCompiler = "com.google.dagger:dagger-android-processor:${Versions.dagger_version}"
 }
 
 object ThirdPartyDependencies {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide_version}"
+    const val dagger = "com.google.dagger:dagger:${Versions.dagger_version}"
+    const val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger_version}"
+    const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger_version}"
 }
