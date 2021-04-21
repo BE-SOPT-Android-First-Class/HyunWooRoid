@@ -1,5 +1,6 @@
 package com.l2hyunwoo.android
 
+import com.l2hyunwoo.android.di.DaggerExampleComponent
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -13,5 +14,11 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+    }
+
+    @Test
+    fun `의존성 주입 Test`() {
+        val exampleComponent = DaggerExampleComponent.create()
+        assertEquals("Hello World!" == exampleComponent.getHelloWorld(), true)
     }
 }
