@@ -30,4 +30,13 @@ class ExampleUnitTest {
             .inject(sampleWrapper)
         assertEquals("Hello World!" == sampleWrapper.sampleString, true)
     }
+
+    @Test
+    fun `MembersInjector Test`() {
+        val sampleWrapper = SampleWrapper()
+        val injector = DaggerExampleComponent.create()
+            .getMemberInjector()
+        injector.injectMembers(sampleWrapper)
+        assertEquals("Hello World!" == sampleWrapper.sampleString, true)
+    }
 }
