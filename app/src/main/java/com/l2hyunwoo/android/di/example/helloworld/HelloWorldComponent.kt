@@ -1,10 +1,11 @@
-package com.l2hyunwoo.android.di.example
+package com.l2hyunwoo.android.di.example.helloworld
 
+import com.l2hyunwoo.android.di.example.model.SampleWrapper
 import dagger.Component
 import dagger.MembersInjector
 
-@Component(modules = [ExampleModule::class])
-interface ExampleComponent {
+@Component(modules = [HelloWorldModule::class])
+interface HelloWorldComponent {
     fun getHelloWorld(): String
     fun inject(sampleWrapper: SampleWrapper)
     fun getMemberInjector(): MembersInjector<SampleWrapper>
