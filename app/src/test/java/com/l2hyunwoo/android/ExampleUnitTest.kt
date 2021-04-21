@@ -1,6 +1,7 @@
 package com.l2hyunwoo.android
 
-import com.l2hyunwoo.android.di.DaggerExampleComponent
+import com.l2hyunwoo.android.di.example.DaggerExampleComponent
+import com.l2hyunwoo.android.di.example.SampleWrapper
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -17,8 +18,16 @@ class ExampleUnitTest {
     }
 
     @Test
-    fun `의존성 주입 Test`() {
+    fun `Provision Injection Test`() {
         val exampleComponent = DaggerExampleComponent.create()
         assertEquals("Hello World!" == exampleComponent.getHelloWorld(), true)
+    }
+
+    @Test
+    fun `Member-Injection Test`() {
+        val sampleWrapper = SampleWrapper()
+        DaggerExampleComponent.create()
+            .inject(sampleWrapper)
+        assertEquals("Hello World!" == sampleWrapper.sampleString, true)
     }
 }
