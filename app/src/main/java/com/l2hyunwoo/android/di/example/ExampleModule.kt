@@ -1,4 +1,4 @@
-package com.l2hyunwoo.android.di
+package com.l2hyunwoo.android.di.example
 
 import dagger.Module
 import dagger.Provides
