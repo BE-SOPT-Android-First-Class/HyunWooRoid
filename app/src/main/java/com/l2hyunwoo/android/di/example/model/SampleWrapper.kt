@@ -1,4 +1,4 @@
-package com.l2hyunwoo.android.di.example
+package com.l2hyunwoo.android.di.example.model
 
 import javax.inject.Inject
 
