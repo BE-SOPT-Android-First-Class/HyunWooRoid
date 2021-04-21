@@ -66,6 +66,13 @@ dependencies {
     implementation(ThirdPartyDependencies.glide)
     kapt(KaptDependencies.glideCompiler)
 
+    // Dagger2
+    implementation(ThirdPartyDependencies.dagger)
+    implementation(ThirdPartyDependencies.daggerAndroid)
+    implementation(ThirdPartyDependencies.daggerAndroidSupport)
+    kapt(KaptDependencies.dagger)
+    kapt(KaptDependencies.daggerAndroidCompiler)
+
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
     androidTestImplementation(TestDependencies.espresso)
