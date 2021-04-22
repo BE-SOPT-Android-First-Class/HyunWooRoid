@@ -2,11 +2,10 @@ package com.l2hyunwoo.android.di.example.person
 
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.migration.DisableInstallInCheck
 import javax.inject.Named
 
 @Module
-@DisableInstallInCheck
+// @DisableInstallInCheck
 class PersonModule {
     @Provides
     fun provideName(): String = "Charles"

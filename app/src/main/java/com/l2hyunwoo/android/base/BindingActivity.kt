@@ -9,13 +9,26 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import javax.inject.Inject
 
 abstract class BindingActivity<T : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
-    AppCompatActivity() {
+    AppCompatActivity(), HasAndroidInjector {
     protected lateinit var binding: T
+
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+
+    override fun androidInjector(): AndroidInjector<Any> {
+        return androidInjector
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AndroidInjection.inject(this)
         binding = DataBindingUtil.setContentView(this, layoutResId)
     }
 

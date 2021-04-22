@@ -12,31 +12,24 @@ import com.l2hyunwoo.android.domain.repository.SignUpRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module(includes = [ApplicationModuleBinds::class])
-object ApplicationModule {
-    @Qualifier
-    @Retention
-    annotation class LocalDataSource
+class ApplicationModule() {
 
-    @JvmStatic
     @Singleton
-    @LocalDataSource
     @Provides
     fun provideDataStore(context: Context): DataStore<Preferences> =
         PreferenceDataStoreFactory.create { context.preferencesDataStoreFile("GithubDataStore") }
-
 }
 
 @Module
 abstract class ApplicationModuleBinds {
     @Singleton
     @Binds
-    abstract fun bindLoginRepository(repository: LoginRepository): LoginRepositoryImpl
+    abstract fun bindLoginRepository(repository: LoginRepositoryImpl): LoginRepository
 
     @Singleton
     @Binds
-    abstract fun bindSignUpRepository(repository: SignUpRepository): SignUpRepositoryImpl
+    abstract fun bindSignUpRepository(repository: SignUpRepositoryImpl): SignUpRepository
 }

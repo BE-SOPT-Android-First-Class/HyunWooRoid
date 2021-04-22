@@ -5,19 +5,27 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.l2hyunwoo.android.R
 import com.l2hyunwoo.android.base.BindingActivity
 import com.l2hyunwoo.android.databinding.ActivitySignInBinding
 import com.l2hyunwoo.android.presentation.main.MainActivity
 import com.l2hyunwoo.android.presentation.signup.SignUpActivity
 import com.l2hyunwoo.android.presentation.util.toast
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.android.AndroidInjection
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
-    private val signInViewModel: SignInViewModel by viewModels()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val signInViewModel: SignInViewModel by viewModels { viewModelFactory }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+        androidInjector.maybeInject(this)
         binding.lifecycleOwner = this
         binding.viewModel = signInViewModel
         LifeCycleEventLogger(javaClass.simpleName).registerLogger(this.lifecycle)

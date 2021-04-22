@@ -10,11 +10,9 @@ import com.l2hyunwoo.android.domain.entity.UserInfo
 import com.l2hyunwoo.android.domain.repository.SignUpRepository
 import com.l2hyunwoo.android.presentation.util.SingleLiveEvent
 import com.l2hyunwoo.android.presentation.util.addSourceList
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
 class SignUpViewModel @Inject constructor(
     private val signUpRepository: SignUpRepository
 ) : ViewModel() {
