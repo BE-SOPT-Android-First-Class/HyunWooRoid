@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    // id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
 }
 
@@ -50,8 +50,8 @@ dependencies {
     implementation(AndroidXDependencies.constraintLayout)
 
     // Hilt
-    implementation(AndroidXDependencies.hilt)
-    kapt(KaptDependencies.hilt)
+    // implementation(AndroidXDependencies.hilt)
+    // kapt(KaptDependencies.hilt)
 
     // DataStore
     implementation(AndroidXDependencies.dataStore)
