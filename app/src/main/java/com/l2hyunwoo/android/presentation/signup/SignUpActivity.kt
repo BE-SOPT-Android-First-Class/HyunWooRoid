@@ -13,12 +13,8 @@ import javax.inject.Inject
 
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
 
-    @Inject
-    lateinit var signUpViewModelFactory: ViewModelProvider.Factory
-
-    private val signUpViewModel: SignUpViewModel by viewModels { signUpViewModelFactory }
+    private val signUpViewModel: SignUpViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
         binding.viewModel = signUpViewModel
