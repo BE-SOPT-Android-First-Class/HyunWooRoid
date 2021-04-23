@@ -3,8 +3,9 @@ package com.l2hyunwoo.android.presentation.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel @Inject constructor() : ViewModel() {
     private val _profileUrl = MutableLiveData(PROFILE_URL)
     val profileUrl: LiveData<String>
         get() = _profileUrl
