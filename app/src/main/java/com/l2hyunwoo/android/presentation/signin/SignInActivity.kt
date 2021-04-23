@@ -17,13 +17,9 @@ import javax.inject.Inject
 
 class SignInActivity : BindingActivity<ActivitySignInBinding>(R.layout.activity_sign_in) {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val signInViewModel: SignInViewModel by viewModels { viewModelFactory }
+    private val signInViewModel: SignInViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         androidInjector.maybeInject(this)
         binding.lifecycleOwner = this

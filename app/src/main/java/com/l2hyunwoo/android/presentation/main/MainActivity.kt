@@ -7,7 +7,7 @@ import com.l2hyunwoo.android.base.BindingActivity
 import com.l2hyunwoo.android.databinding.ActivityMainBinding
 
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
