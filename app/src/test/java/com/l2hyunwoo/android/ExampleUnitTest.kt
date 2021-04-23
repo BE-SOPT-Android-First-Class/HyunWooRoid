@@ -5,6 +5,10 @@ import com.l2hyunwoo.android.di.example.model.PersonWithMember
 import com.l2hyunwoo.android.di.example.model.SampleWrapper
 import com.l2hyunwoo.android.di.example.person.DaggerPersonComponent
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertThat
+import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
 class ExampleUnitTest {
@@ -47,4 +51,20 @@ class ExampleUnitTest {
         assert(personWithMember.name == "Charles")
         assert(personWithMember.age == 100)
     }
+
+    sealed class Example(val data: String) {
+        object SampleA : Example("A")
+        object SampleB : Example("B")
+        class SampleC: Example("C")
+    }
+    @Test
+    fun `Object-Eqaulity`() {
+        assert(Example.SampleA == Example.SampleA)
+        // assert(Example.SampleA == Example.SampleB) 오류가 납니다
+
+        assertTrue(checkEqual(Example.SampleA, Example.SampleA))
+        assertFalse(checkEqual(Example.SampleA, Example.SampleB))
+    }
+
+    private fun checkEqual(old: Example, new: Example) = old == new
 }
