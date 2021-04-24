@@ -19,7 +19,7 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="20sp"
-            tools:text="HYUNWOO's REPOSITORY"
+            android:text="HYUNWOO's REPOSITORY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

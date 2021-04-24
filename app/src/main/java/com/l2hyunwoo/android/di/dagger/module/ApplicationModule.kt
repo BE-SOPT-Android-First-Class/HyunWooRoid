@@ -42,10 +42,6 @@ class ApplicationModule() {
 
     @Singleton
     @Provides
-    fun provideApplicationContext(context: Context): Context = context.applicationContext
-
-    @Singleton
-    @Provides
     fun provideDataStore(context: Context): DataStore<Preferences> =
         PreferenceDataStoreFactory.create { context.preferencesDataStoreFile("GithubDataStore") }
 }
