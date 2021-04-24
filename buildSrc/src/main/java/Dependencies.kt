@@ -18,8 +18,8 @@ object AndroidXDependencies {
     const val fragmentKtx =
         "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}"
     const val navigationFragment =
-        "androidx.navigation:navigation-fragment-ktx:$${Versions.navigation_version}"
-    const val navigation = "androidx.navigation:navigation-ui-ktx:$${Versions.navigation_version}"
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation_version}"
+    const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation_version}"
 }
 
 object TestDependencies {

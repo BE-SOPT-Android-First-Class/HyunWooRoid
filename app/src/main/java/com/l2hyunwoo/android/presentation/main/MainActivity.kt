@@ -1,6 +1,8 @@
 package com.l2hyunwoo.android.presentation.main
 
 import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.l2hyunwoo.android.R
 import com.l2hyunwoo.android.base.BindingActivity
 import com.l2hyunwoo.android.databinding.ActivityMainBinding

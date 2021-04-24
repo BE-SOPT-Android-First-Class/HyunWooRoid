@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.l2hyunwoo.android.presentation.main.subscreen.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/personalInfoFragment"
+        android:name="com.l2hyunwoo.android.presentation.main.subscreen.PersonalInfoFragment"
+        android:label="PersonalInfoFragment" />
+</navigation>
