@@ -16,6 +16,7 @@ import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 abstract class BindingActivity<T : ViewDataBinding>(@LayoutRes private val layoutResId: Int) :
