@@ -10,50 +10,24 @@
             type="com.l2hyunwoo.android.presentation.main.HomeViewModel" />
     </data>
 
-    <ScrollView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".presentation.main.MainActivity">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/main_fragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".presentation.main.MainActivity">
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/main_bnv"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/img_main_profile"
-                android:layout_width="120dp"
-                android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="1"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="40dp"
-                srcFromUrl="@{viewModel.profileUrl}"
-                tools:src="@drawable/ic_github_logo"
-                app:layout_constraintStart_toStartOf="parent" />
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/main_bnv"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-            <TextView
-                android:id="@+id/txt_main_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:text="Github ID: l2hyunwoo"
-                app:layout_constraintTop_toBottomOf="@+id/img_main_profile"
-                app:layout_constraintEnd_toEndOf="@+id/img_main_profile"
-                app:layout_constraintStart_toStartOf="@+id/img_main_profile"
-                tools:text="Github ID: l2hyunwoo" />
-
-            <TextView
-                android:id="@+id/txt_main_intro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="Android Developer"
-                app:layout_constraintTop_toBottomOf="@+id/txt_main_id"
-                app:layout_constraintEnd_toEndOf="@+id/txt_main_id"
-                app:layout_constraintStart_toStartOf="@+id/txt_main_id" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
