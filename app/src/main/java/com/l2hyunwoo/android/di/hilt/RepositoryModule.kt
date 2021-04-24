@@ -1,4 +1,4 @@
-package com.l2hyunwoo.android.di
+package com.l2hyunwoo.android.di.hilt
 
 // @Module
 // @InstallIn(SingletonComponent::class)

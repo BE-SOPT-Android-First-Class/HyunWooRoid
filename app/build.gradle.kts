@@ -73,6 +73,10 @@ dependencies {
     kapt(KaptDependencies.dagger)
     kapt(KaptDependencies.daggerAndroidCompiler)
 
+    // Navigation
+    implementation(AndroidXDependencies.navigation)
+    implementation(AndroidXDependencies.navigationFragment)
+
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
     androidTestImplementation(TestDependencies.espresso)
