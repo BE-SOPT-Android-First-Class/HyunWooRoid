@@ -5,6 +5,8 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
+import com.l2hyunwoo.android.data.datasource.GithubDataSource
+import com.l2hyunwoo.android.data.datasource.MockGithubDataSource
 import com.l2hyunwoo.android.data.repository.LoginRepositoryImpl
 import com.l2hyunwoo.android.data.repository.SignUpRepositoryImpl
 import com.l2hyunwoo.android.domain.repository.LoginRepository
@@ -37,6 +39,10 @@ class ApplicationModule() {
 
     @Singleton
     @Provides
+    fun provideApplicationContext(context: Context): Context = context.applicationContext
+
+    @Singleton
+    @Provides
     fun provideDataStore(context: Context): DataStore<Preferences> =
         PreferenceDataStoreFactory.create { context.preferencesDataStoreFile("GithubDataStore") }
 }
@@ -50,4 +56,8 @@ abstract class ApplicationModuleBinds {
     @Singleton
     @Binds
     abstract fun bindSignUpRepository(repository: SignUpRepositoryImpl): SignUpRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindGithubDataSource(dataSource: MockGithubDataSource): GithubDataSource
 }
