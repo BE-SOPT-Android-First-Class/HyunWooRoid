@@ -2,7 +2,7 @@ package com.l2hyunwoo.android.data.model
 
 
 import com.google.gson.annotations.SerializedName
-import com.l2hyunwoo.android.domain.entity.GithubRepository
+import com.l2hyunwoo.android.domain.entity.GithubRepoInfo
 
 data class ResponseGithubRepository(
     @SerializedName("archive_url")
@@ -189,8 +189,8 @@ data class ResponseGithubRepository(
         val url: String
     )
 
-    fun toRepositoryInfo(): GithubRepository {
-        return GithubRepository(
+    fun toRepositoryInfo(): GithubRepoInfo {
+        return GithubRepoInfo(
             title = this.fullName,
             description = this.description ?: "No Description",
             starCount = stargazersCount

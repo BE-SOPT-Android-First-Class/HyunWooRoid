@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.l2hyunwoo.android.R
 import com.l2hyunwoo.android.databinding.ItemMainRepoBinding
 import com.l2hyunwoo.android.databinding.ItemMainRepoHeaderBinding
-import com.l2hyunwoo.android.domain.entity.GithubRepository
+import com.l2hyunwoo.android.domain.entity.GithubRepoInfo
 
 sealed class UIModel {
     object Header : UIModel()
-    class Repository(val githubRepository: GithubRepository) : UIModel()
+    class Repository(val githubRepository: GithubRepoInfo) : UIModel()
 }
 
 abstract class RepositoryViewHolder(private val binding: ViewDataBinding) :

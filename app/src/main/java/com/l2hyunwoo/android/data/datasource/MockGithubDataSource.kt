@@ -4,7 +4,6 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.l2hyunwoo.android.data.model.ResponseGithubRepository
-import com.l2hyunwoo.android.domain.entity.GithubRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.lang.reflect.Type
@@ -21,7 +20,7 @@ class MockGithubDataSource @Inject constructor(
                     .bufferedReader()
                     .use { it.readText() }
             }
-            Gson().fromJson(repoListJsonFile.getOrNull(), typeOf<List<GithubRepository>>())
+            Gson().fromJson(repoListJsonFile.getOrNull(), typeOf<List<ResponseGithubRepository>>())
         }
     }
 }

@@ -9,8 +9,10 @@ import com.l2hyunwoo.android.data.datasource.GithubDataSource
 import com.l2hyunwoo.android.data.datasource.MockGithubDataSource
 import com.l2hyunwoo.android.data.repository.LoginRepositoryImpl
 import com.l2hyunwoo.android.data.repository.SignUpRepositoryImpl
+import com.l2hyunwoo.android.data.repository.UserReposRepositoryImpl
 import com.l2hyunwoo.android.domain.repository.LoginRepository
 import com.l2hyunwoo.android.domain.repository.SignUpRepository
+import com.l2hyunwoo.android.domain.repository.UserReposRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -21,6 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 const val BASE_URL = "https://api.github.com/"
+
 @Module(includes = [ApplicationModuleBinds::class])
 class ApplicationModule() {
     private fun provideLoggingInterceptor() =
@@ -60,4 +63,8 @@ abstract class ApplicationModuleBinds {
     @Singleton
     @Binds
     abstract fun bindGithubDataSource(dataSource: MockGithubDataSource): GithubDataSource
+
+    @Singleton
+    @Binds
+    abstract fun bindUserReposRepository(userReposRepository: UserReposRepositoryImpl): UserReposRepository
 }

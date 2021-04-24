@@ -2,7 +2,7 @@ package com.l2hyunwoo.android.domain.entity
 
 import com.l2hyunwoo.android.presentation.main.subscreen.UIModel
 
-data class GithubRepository(
+data class GithubRepoInfo(
     val title: String,
     val description: String,
     val starCount: Int

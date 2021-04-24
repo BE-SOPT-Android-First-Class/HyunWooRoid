@@ -7,7 +7,7 @@
 
         <variable
             name="repository"
-            type="com.l2hyunwoo.android.domain.entity.GithubRepository" />
+            type="com.l2hyunwoo.android.domain.entity.GithubRepoInfo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
