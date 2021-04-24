@@ -5,9 +5,6 @@
 
     <data>
 
-        <variable
-            name="viewModel"
-            type="com.l2hyunwoo.android.presentation.main.HomeViewModel" />
     </data>
 
 

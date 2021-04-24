@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.l2hyunwoo.android.di.dagger.ViewModelBuilder
 import com.l2hyunwoo.android.di.dagger.ViewModelKey
 import com.l2hyunwoo.android.presentation.main.HomeViewModel
-import com.l2hyunwoo.android.presentation.main.MainActivity
+import com.l2hyunwoo.android.presentation.main.subscreen.HomeFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -17,7 +17,7 @@ abstract class HomeModule {
             ViewModelBuilder::class
         ]
     )
-    internal abstract fun homeActivity(): MainActivity
+    internal abstract fun homeFragment(): HomeFragment
 
     @Binds
     @IntoMap
