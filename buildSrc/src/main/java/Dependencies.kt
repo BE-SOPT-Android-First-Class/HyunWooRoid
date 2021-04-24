@@ -52,4 +52,5 @@ object ThirdPartyDependencies {
     const val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger_version}"
     const val daggerAndroidSupport =
         "com.google.dagger:dagger-android-support:${Versions.dagger_version}"
+    const val gson = "com.google.code.gson:gson:${Versions.gson_version}"
 }

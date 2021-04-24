@@ -79,6 +79,9 @@ dependencies {
     implementation(AndroidXDependencies.navigation)
     implementation(AndroidXDependencies.navigationFragment)
 
+    // Gson
+    implementation(ThirdPartyDependencies.gson)
+
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
     androidTestImplementation(TestDependencies.espresso)
