@@ -10,9 +10,7 @@ class UserReposRepositoryImpl @Inject constructor(
     private val githubDataSource: GithubDataSource
 ) : UserReposRepository {
     override suspend fun getUserRepos(githubId: String): List<GithubRepoInfo> {
-        val data = githubDataSource.fetchRepoList(githubId)
+        return githubDataSource.fetchRepoList(githubId)
             .map { it.toRepositoryInfo() }
-        Log.d("UserReposRepositoryImpl", data.toString())
-        return data
     }
 }
