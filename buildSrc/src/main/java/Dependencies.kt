@@ -44,7 +44,6 @@ object KaptDependencies {
     const val dagger = "com.google.dagger:dagger-compiler:${Versions.dagger_version}"
     const val daggerAndroidCompiler =
         "com.google.dagger:dagger-android-processor:${Versions.dagger_version}"
-    const val mockFit = "com.github.javaherisaber.MockFit:compiler:${Versions.mockfit_version}"
 }
 
 object ThirdPartyDependencies {
@@ -54,5 +53,9 @@ object ThirdPartyDependencies {
     const val daggerAndroidSupport =
         "com.google.dagger:dagger-android-support:${Versions.dagger_version}"
     const val gson = "com.google.code.gson:gson:${Versions.gson_version}"
-    const val mockFit = "com.github.javaherisaber.MockFit:runtime:${Versions.mockfit_version}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"
+    const val okhttpBOM ="com.squareup.okhttp3:okhttp-bom:${Versions.okhttp_version}"
+    const val okhttp ="com.squareup.okhttp3:okhttp"
+    const val okhttpInterceptor = "com.squareup.okhttp3:logging-interceptor"
 }

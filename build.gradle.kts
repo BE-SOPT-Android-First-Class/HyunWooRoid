@@ -4,7 +4,6 @@ buildscript {
         google()
         jcenter()
         maven(url = "https://plugins.gradle.org/m2/")
-        maven(url = "https://jitpack.io")
     }
     dependencies {
         classpath("com.android.tools.build:gradle:${Versions.gradle_version}")

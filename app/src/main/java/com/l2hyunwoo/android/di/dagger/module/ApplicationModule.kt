@@ -12,10 +12,28 @@ import com.l2hyunwoo.android.domain.repository.SignUpRepository
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+const val BASE_URL = "https://api.github.com/"
 @Module(includes = [ApplicationModuleBinds::class])
 class ApplicationModule() {
+    private fun provideLoggingInterceptor() =
+        HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+
+    private fun provideOkHttpClient() = OkHttpClient.Builder()
+        .addInterceptor(provideLoggingInterceptor())
+        .build()
+
+    @Singleton
+    @Provides
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder().baseUrl(BASE_URL).client(provideOkHttpClient())
+            .addConverterFactory(GsonConverterFactory.create()).build()
+    }
 
     @Singleton
     @Provides

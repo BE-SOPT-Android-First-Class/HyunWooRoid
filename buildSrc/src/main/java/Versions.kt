@@ -20,7 +20,8 @@ object Versions {
     const val glide_version = "4.12.0"
     const val glide_compiler_version = "4.11.0"
     const val gson_version = "2.8.6"
-    const val mockfit_version = "1.1.0"
+    const val retrofit_version = "2.9.0"
+    const val okhttp_version = "4.9.1"
 
     const val junit_version = "4.13.2"
     const val espresso_version = "3.3.0"

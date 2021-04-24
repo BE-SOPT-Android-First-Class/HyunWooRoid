@@ -80,9 +80,14 @@ dependencies {
     // Gson
     implementation(ThirdPartyDependencies.gson)
 
-    // MockFit
-    implementation(ThirdPartyDependencies.mockFit)
-    kapt(KaptDependencies.mockFit)
+    // Okhttp
+    implementation(platform(ThirdPartyDependencies.okhttpBOM))
+    implementation(ThirdPartyDependencies.okhttp)
+    implementation(ThirdPartyDependencies.okhttpInterceptor)
+
+    // Retrofit
+    implementation(ThirdPartyDependencies.retrofit)
+    implementation(ThirdPartyDependencies.retrofitGsonConverter)
 
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
