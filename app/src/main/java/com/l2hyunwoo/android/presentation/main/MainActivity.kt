@@ -1,7 +1,7 @@
 package com.l2hyunwoo.android.presentation.main
 
 import android.os.Bundle
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.l2hyunwoo.android.R
 import com.l2hyunwoo.android.base.BindingActivity
@@ -19,7 +19,15 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         binding.lifecycleOwner = this
         binding.viewModel = homeViewModel
         checkCorrectTransfer()
+        setUpBottomNavigation()
         LifeCycleEventLogger(javaClass.simpleName).log()
+    }
+
+    private fun setUpBottomNavigation() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.main_nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        binding.mainBnv.setupWithNavController(navController)
     }
 
     private fun checkCorrectTransfer() =

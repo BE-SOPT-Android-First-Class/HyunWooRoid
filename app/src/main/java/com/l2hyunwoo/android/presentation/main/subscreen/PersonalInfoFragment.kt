@@ -15,6 +15,7 @@ class PersonalInfoFragment :
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        super.onCreateView(inflater, container, savedInstanceState)
         return binding.root
     }
 }
