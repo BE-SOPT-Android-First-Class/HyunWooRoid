@@ -2,6 +2,8 @@
 ## What Did You Use?
 
 - Kotlin
+- [Android Kotlin Official Guide](https://developer.android.com/kotlin/style-guide)
+- MVVM Architecture
 - ConstraintLayout
 - Gradle Kotlin DSL
 - Android Jetpack
@@ -12,18 +14,24 @@
     - DataStore
     - Dagger-Hilt [WEEK 1]
     - DataBinding
+    - Navigation Component
 - Dagger2(AndroidDagger)
 - Android KTX
 - Coroutine
 - Glide
 - ktlint
-- [Android Kotlin Official Guide](https://developer.android.com/kotlin/style-guide)
-- MVVM Architecture
-
-## 1주차 과제 (LEVEL 1, 2, 3 완료)
+- Gson
+- OkHttp
+    - Retrofit
 
 ### 화면캡쳐
-<img src="https://user-images.githubusercontent.com/54518925/114260620-0e4d4a80-9a11-11eb-9529-baaf746a73ff.gif" width="30%" />
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/54518925/116030360-58cbf980-a696-11eb-9843-9a66bccbc431.gif" width="30%" />
+    <img src="https://user-images.githubusercontent.com/54518925/116030364-59fd2680-a696-11eb-8683-c6c66acddf50.gif" width="30%" />
+</p>
+
+## 1주차 과제 (LEVEL 1, 2, 3 완료)
 
 ### 생명주기를 Log로 호출하는 법 - LifeCycleObserver를 사용
 - Activity/Fragment와 같은 Component의 Lifecycle은 Android Jetpack에서 제공하는 **LifeCycleObserver를 활용하여 구현하였다**
@@ -189,3 +197,225 @@ protected inner class LifeCycleEventLogger(private val className: String) : Life
 ### Log 화면 캡쳐
 <img src="https://user-images.githubusercontent.com/54518925/114260300-e4932400-9a0e-11eb-9696-02542c78bab0.png" />
 
+## 2주차 과제 (LEVEL 1, LEVEl 2-2 구현)
+
+### Dagger2로 Dependency Injection 구현
+
+- Hilt의 선조 격인 Dagger2로 Dependency Injection을 해보면서 Hilt 내부에서는 어떠한 일들이 일어나는 지 확인해보고자 Dagger를 이용해 봄
+
+```kotlin
+// Dagger Component
+@Singleton
+@Component(
+    modules = [
+        AndroidSupportInjectionModule::class,
+        ApplicationModule::class,
+        SignInModule::class,
+        SignUpModule::class,
+        MainModule::class
+    ]
+)
+interface AppComponent : AndroidInjector<GithubApplication> {
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(app: Context): Builder
+        fun build(): AppComponent
+    }
+}
+
+// App Module
+@Module(includes = [ApplicationModuleBinds::class])
+class ApplicationModule() {
+    private fun provideLoggingInterceptor() =
+        HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+
+    private fun provideOkHttpClient() = OkHttpClient.Builder()
+        .addInterceptor(provideLoggingInterceptor())
+        .build()
+
+    @Singleton
+    @Provides
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder().baseUrl(BASE_URL).client(provideOkHttpClient())
+            .addConverterFactory(GsonConverterFactory.create()).build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideDataStore(context: Context): DataStore<Preferences> =
+        PreferenceDataStoreFactory.create { context.preferencesDataStoreFile("GithubDataStore") }
+}
+
+// Interface는 @Binds로 Injection
+@Module
+abstract class ApplicationModuleBinds {
+    @Singleton
+    @Binds
+    abstract fun bindLoginRepository(repository: LoginRepositoryImpl): LoginRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindSignUpRepository(repository: SignUpRepositoryImpl): SignUpRepository
+
+    @Singleton
+    @Binds
+    abstract fun bindGithubDataSource(dataSource: MockGithubDataSource): GithubDataSource
+
+    @Singleton
+    @Binds
+    abstract fun bindUserReposRepository(userReposRepository: UserReposRepositoryImpl): UserReposRepository
+}
+
+// ViewModelProvider.Factory를 Inject 시켜주는 Provider 클래스
+class ViewModelFactory @Inject constructor(
+    private val creators: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
+) : ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        var creator: Provider<out ViewModel>? = creators[modelClass]
+        if (creator == null) {
+            for ((key, value) in creators) {
+                if (modelClass.isAssignableFrom(key)) {
+                    creator = value
+                    break
+                }
+            }
+        }
+        if (creator == null) {
+            throw IllegalArgumentException("Unknown model class: $modelClass")
+        }
+        try {
+            @Suppress("UNCHECKED_CAST")
+            return creator.get() as T
+        } catch (e: Exception) {
+            throw RuntimeException(e)
+        }
+
+    }
+}
+
+// ViewModelBuilder 모듈
+@Module
+internal abstract class ViewModelBuilder {
+    @Binds
+    internal abstract fun bindViewModelFactory(
+        factory: ViewModelFactory
+    ): ViewModelProvider.Factory
+}
+```
+
+### Sealed Class와 Abstract Class로 행동 추상화
+
+- sealed class로 보여지는 View Type을 Header와 Item으로 분기
+- 각 케이스에 해당하는 Binding 객체를 ``getItemViewType`` 함수와 ``onCreateViewHolder`` 함수를 통해 만들어줌
+- ViewHolder를 abstract class로 추상화시켜 ViewHolder의 책임을 명시
+
+```kotlin
+sealed class UIModel {
+    object Header : UIModel()
+    class Repository(val githubRepository: GithubRepoInfo) : UIModel()
+}
+
+abstract class RepositoryViewHolder(private val binding: ViewDataBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+    abstract fun onBind(uiModel: UIModel)
+}
+
+class RepositoryItemViewHolder(private val binding: ItemMainRepoBinding) :
+    RepositoryViewHolder(binding) {
+    override fun onBind(uiModel: UIModel) {
+        binding.repository = (uiModel as UIModel.Repository).githubRepository
+    }
+}
+
+class RepositoryHeaderViewHolder(private val binding: ItemMainRepoHeaderBinding) :
+    RepositoryViewHolder(binding) {
+    override fun onBind(uiModel: UIModel) {}
+}
+
+class RepositoryListAdapter : RecyclerView.Adapter<RepositoryViewHolder>() {
+    private val repositoryList = mutableListOf<UIModel>()
+
+    override fun getItemViewType(position: Int): Int {
+        return when (repositoryList[position]) {
+            is UIModel.Header -> HEADER
+            is UIModel.Repository -> ITEM
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = when (viewType) {
+            HEADER -> DataBindingUtil.inflate<ItemMainRepoHeaderBinding>(
+                layoutInflater,
+                R.layout.item_main_repo_header,
+                parent,
+                false
+            )
+            ITEM -> DataBindingUtil.inflate<ItemMainRepoBinding>(
+                layoutInflater,
+                R.layout.item_main_repo,
+                parent,
+                false
+            )
+            else -> throw IllegalArgumentException("Error View Type: $viewType")
+        }
+        return when(binding) {
+            is ItemMainRepoHeaderBinding -> RepositoryHeaderViewHolder(binding)
+            is ItemMainRepoBinding -> RepositoryItemViewHolder(binding)
+            else -> throw IllegalArgumentException("Error Binding Type: ${binding.javaClass}")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
+        holder.onBind(repositoryList[position])
+    }
+}
+```
+
+### 로컬 asset json 파일을 가져와서 item 넣어주기
+- asset 폴더의 json 파일을 가져와서 Gson으로 deserializing하여 실제 서버통신을 하는 로직을 비슷하게 Mocking함
+```kotlin
+class MockGithubDataSource @Inject constructor(
+    private val context: Context
+) : GithubDataSource {
+    override suspend fun fetchRepoList(githubId: String): List<ResponseGithubRepository> {
+        return withContext(Dispatchers.IO) {
+            val repoListJsonFile = runCatching {
+                context.assets
+                    .open("fake_repo_list.json")
+                    .bufferedReader()
+                    .use { it.readText() }
+            }
+            Gson().fromJson(repoListJsonFile.getOrNull(), typeOf<List<ResponseGithubRepository>>())
+        }
+    }
+}
+```
+
+### ItemDecoration으로 아이템 간 간격 주기
+
+- RecyclerView.ItemDecoration을 상속받은 VerticalItemDecorator 클래스를 활용하여 개발자가 원하는 만큼의 vertical margin을 줄 수 있도록 설계
+- 첫 포지션에서는 top, bottom 모두, 이외의 포지션에서는 bottom만 마진을 줄 수 있게하여 아이템 간 간격을 동일하게 주었음
+
+```kotlin
+class VerticaltemDecorator(private val padding: Int) : RecyclerView.ItemDecoration() {
+    override fun getItemOffsets(
+        outRect: Rect,
+        view: View,
+        parent: RecyclerView,
+        state: RecyclerView.State
+    ) {
+        super.getItemOffsets(outRect, view, parent, state)
+        when(parent.getChildAdapterPosition(view)) {
+            0 -> {
+                with(outRect) {
+                    top = padding
+                    bottom = padding
+                }
+            }
+            else -> outRect.bottom = padding
+        }
+    }
+}
+```
