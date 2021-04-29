@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    // id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
 }
 
@@ -50,8 +50,8 @@ dependencies {
     implementation(AndroidXDependencies.constraintLayout)
 
     // Hilt
-    implementation(AndroidXDependencies.hilt)
-    kapt(KaptDependencies.hilt)
+    // implementation(AndroidXDependencies.hilt)
+    // kapt(KaptDependencies.hilt)
 
     // DataStore
     implementation(AndroidXDependencies.dataStore)
@@ -72,6 +72,22 @@ dependencies {
     implementation(ThirdPartyDependencies.daggerAndroidSupport)
     kapt(KaptDependencies.dagger)
     kapt(KaptDependencies.daggerAndroidCompiler)
+
+    // Navigation
+    implementation(AndroidXDependencies.navigation)
+    implementation(AndroidXDependencies.navigationFragment)
+
+    // Gson
+    implementation(ThirdPartyDependencies.gson)
+
+    // Okhttp
+    implementation(platform(ThirdPartyDependencies.okhttpBOM))
+    implementation(ThirdPartyDependencies.okhttp)
+    implementation(ThirdPartyDependencies.okhttpInterceptor)
+
+    // Retrofit
+    implementation(ThirdPartyDependencies.retrofit)
+    implementation(ThirdPartyDependencies.retrofitGsonConverter)
 
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)

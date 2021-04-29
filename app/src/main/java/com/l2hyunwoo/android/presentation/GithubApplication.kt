@@ -1,7 +1,14 @@
 package com.l2hyunwoo.android.presentation
 
-import android.app.Application
-import dagger.hilt.android.HiltAndroidApp
+import com.l2hyunwoo.android.di.dagger.component.DaggerAppComponent
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 
-@HiltAndroidApp
-class GithubApplication : Application()
+class GithubApplication : DaggerApplication() {
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.builder()
+            .application(this.applicationContext)
+            .build()
+    }
+
+}

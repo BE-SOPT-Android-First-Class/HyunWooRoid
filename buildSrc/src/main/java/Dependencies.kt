@@ -17,6 +17,9 @@ object AndroidXDependencies {
         "androidx.activity:activity-ktx:${Versions.activity_ktx}"
     const val fragmentKtx =
         "androidx.fragment:fragment-ktx:${Versions.fragment_ktx}"
+    const val navigationFragment =
+        "androidx.navigation:navigation-fragment-ktx:${Versions.navigation_version}"
+    const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation_version}"
 }
 
 object TestDependencies {
@@ -36,14 +39,23 @@ object MaterialDesignDependencies {
 
 object KaptDependencies {
     const val hilt = "com.google.dagger:hilt-compiler:${Versions.hilt_version}"
-    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide_compiler_version}"
+    const val glideCompiler =
+        "com.github.bumptech.glide:compiler:${Versions.glide_compiler_version}"
     const val dagger = "com.google.dagger:dagger-compiler:${Versions.dagger_version}"
-    const val daggerAndroidCompiler = "com.google.dagger:dagger-android-processor:${Versions.dagger_version}"
+    const val daggerAndroidCompiler =
+        "com.google.dagger:dagger-android-processor:${Versions.dagger_version}"
 }
 
 object ThirdPartyDependencies {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide_version}"
     const val dagger = "com.google.dagger:dagger:${Versions.dagger_version}"
     const val daggerAndroid = "com.google.dagger:dagger-android:${Versions.dagger_version}"
-    const val daggerAndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger_version}"
+    const val daggerAndroidSupport =
+        "com.google.dagger:dagger-android-support:${Versions.dagger_version}"
+    const val gson = "com.google.code.gson:gson:${Versions.gson_version}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"
+    const val okhttpBOM ="com.squareup.okhttp3:okhttp-bom:${Versions.okhttp_version}"
+    const val okhttp ="com.squareup.okhttp3:okhttp"
+    const val okhttpInterceptor = "com.squareup.okhttp3:logging-interceptor"
 }
