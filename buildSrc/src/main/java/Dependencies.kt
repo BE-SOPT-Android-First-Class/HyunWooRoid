@@ -20,6 +20,8 @@ object AndroidXDependencies {
     const val navigationFragment =
         "androidx.navigation:navigation-fragment-ktx:${Versions.navigation_version}"
     const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation_version}"
+    const val security = "androidx.security:security-crypto:${Versions.security_version}"
+    const val biometric = "androidx.biometric:biometric:${Versions.biometric_version}"
 }
 
 object TestDependencies {
@@ -54,8 +56,11 @@ object ThirdPartyDependencies {
         "com.google.dagger:dagger-android-support:${Versions.dagger_version}"
     const val gson = "com.google.code.gson:gson:${Versions.gson_version}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit_version}"
-    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"
-    const val okhttpBOM ="com.squareup.okhttp3:okhttp-bom:${Versions.okhttp_version}"
-    const val okhttp ="com.squareup.okhttp3:okhttp"
+    const val retrofitGsonConverter =
+        "com.squareup.retrofit2:converter-gson:${Versions.retrofit_version}"
+    const val okhttpBOM = "com.squareup.okhttp3:okhttp-bom:${Versions.okhttp_version}"
+    const val okhttp = "com.squareup.okhttp3:okhttp"
     const val okhttpInterceptor = "com.squareup.okhttp3:logging-interceptor"
+    const val rxJava = "io.reactivex.rxjava2:rxjava:${Versions.rxjava_version}"
+    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxandroid_version}"
 }

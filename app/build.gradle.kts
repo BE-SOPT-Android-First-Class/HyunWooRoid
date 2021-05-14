@@ -89,6 +89,16 @@ dependencies {
     implementation(ThirdPartyDependencies.retrofit)
     implementation(ThirdPartyDependencies.retrofitGsonConverter)
 
+    // Reactive Extensions(Rx)
+    implementation(ThirdPartyDependencies.rxJava)
+    implementation(ThirdPartyDependencies.rxAndroid)
+
+    // Androidx Security
+    implementation(AndroidXDependencies.security)
+
+    // Biometric
+    implementation(AndroidXDependencies.biometric)
+
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
     androidTestImplementation(TestDependencies.espresso)
