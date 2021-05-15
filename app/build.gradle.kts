@@ -99,6 +99,9 @@ dependencies {
     // Biometric
     implementation(AndroidXDependencies.biometric)
 
+    // Kotlinx-Serialization
+    implementation(AndroidXDependencies.kotlinxSerialization)
+
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)
     androidTestImplementation(TestDependencies.espresso)

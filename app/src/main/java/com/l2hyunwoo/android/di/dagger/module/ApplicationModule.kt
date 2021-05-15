@@ -10,9 +10,11 @@ import com.l2hyunwoo.android.data.datasource.MockGithubDataSource
 import com.l2hyunwoo.android.data.repository.LoginRepositoryImpl
 import com.l2hyunwoo.android.data.repository.SignUpRepositoryImpl
 import com.l2hyunwoo.android.data.repository.UserReposRepositoryImpl
+import com.l2hyunwoo.android.data.util.EncryptedDataStore
 import com.l2hyunwoo.android.domain.repository.LoginRepository
 import com.l2hyunwoo.android.domain.repository.SignUpRepository
 import com.l2hyunwoo.android.domain.repository.UserReposRepository
+import com.l2hyunwoo.android.presentation.util.CipherToolBox
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -24,7 +26,12 @@ import javax.inject.Singleton
 
 const val BASE_URL = "https://api.github.com/"
 
-@Module(includes = [ApplicationModuleBinds::class])
+@Module(
+    includes = [
+        ApplicationModuleBinds::class,
+        DataStoreModule::class
+    ]
+)
 class ApplicationModule() {
     private fun provideLoggingInterceptor() =
         HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
@@ -39,11 +46,6 @@ class ApplicationModule() {
         return Retrofit.Builder().baseUrl(BASE_URL).client(provideOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
-
-    @Singleton
-    @Provides
-    fun provideDataStore(context: Context): DataStore<Preferences> =
-        PreferenceDataStoreFactory.create { context.preferencesDataStoreFile("GithubDataStore") }
 }
 
 @Module
@@ -63,4 +65,23 @@ abstract class ApplicationModuleBinds {
     @Singleton
     @Binds
     abstract fun bindUserReposRepository(userReposRepository: UserReposRepositoryImpl): UserReposRepository
+}
+
+@Module
+class DataStoreModule() {
+    @Singleton
+    @Provides
+    fun provideCipherToolBox(context: Context) = CipherToolBox(context)
+
+    @Singleton
+    @Provides
+    fun provideDataStore(context: Context): DataStore<Preferences> =
+        PreferenceDataStoreFactory.create { context.preferencesDataStoreFile("GithubDataStore") }
+
+    @Singleton
+    @Provides
+    fun provideEncryptedDataStore(
+        cipherToolBox: CipherToolBox,
+        dataStore: DataStore<Preferences>
+    ) = EncryptedDataStore(dataStore, cipherToolBox)
 }

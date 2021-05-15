@@ -22,6 +22,8 @@ object AndroidXDependencies {
     const val navigation = "androidx.navigation:navigation-ui-ktx:${Versions.navigation_version}"
     const val security = "androidx.security:security-crypto:${Versions.security_version}"
     const val biometric = "androidx.biometric:biometric:${Versions.biometric_version}"
+    const val kotlinxSerialization =
+        "org.jetbrains.kotlinx:kotlinx-serialization-json:${Versions.kotlinx_serialization_version}"
 }
 
 object TestDependencies {
