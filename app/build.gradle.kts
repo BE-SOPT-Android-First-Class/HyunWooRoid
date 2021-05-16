@@ -36,6 +36,13 @@ android {
     kotlinOptions {
         jvmTarget = Versions.jvm_version
     }
+
+    externalNativeBuild {
+        cmake {
+            path("src/main/jni/CMakeLists.txt")
+        }
+    }
+
     buildFeatures {
         dataBinding = true
         viewBinding = true
