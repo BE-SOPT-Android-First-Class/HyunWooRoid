@@ -433,7 +433,7 @@ class VerticaltemDecorator(private val padding: Int) : RecyclerView.ItemDecorati
 }
 ```
 
-## 4주차 과제(Level 1 완료)
+## 4주차 과제(Level 1, 3 완료)
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/54518925/118400966-c6b87f00-b69e-11eb-924f-7873ac7473c0.png"/>
@@ -576,4 +576,7 @@ data class UserInfo(
 - 일반 동기식 코드처럼 비동기 처리(라고 하기에는 좀 그렇지만 여기서는 그렇게 쓰자)를 할 수 있는 Coroutine을 활용했다.
 - 그리고 API 키(baseUrl)를 잘 지키는 방법을 최대한 고안을 많이 했고 일전에 눈여겨뒀던 방법인 jni를 활용한 방법을 이번에 적용해봤다
     - 깔끔하면서도 보안 강도를 올리는 방법을 새롭게 올릴 수 있어서 좋은 방법이라고 생각한다.
+- Dagger(Hilt)의 Singleton provides를 활용하여 [전역에서 Thread-Safe한 객체](https://stackoverflow.com/questions/30240338/is-singleton-in-dagger-2-thread-safe)를 만들 수 있었다.
+- Coroutines를 활용하여 Callback을 없애고 runCatching을 활용하여 서버통신이 일어나는 부분-성공-실패 부분을 layer화 시켜
+    - 코드의 일관성을 높여 가독성을 높이는 코드를 만들 수 있었다.
 
