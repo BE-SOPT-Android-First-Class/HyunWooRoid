@@ -11,6 +11,8 @@ import com.l2hyunwoo.android.data.repository.LoginRepositoryImpl
 import com.l2hyunwoo.android.data.repository.SignUpRepositoryImpl
 import com.l2hyunwoo.android.data.repository.UserReposRepositoryImpl
 import com.l2hyunwoo.android.data.util.EncryptedDataStore
+import com.l2hyunwoo.android.data.util.UrlStore
+import com.l2hyunwoo.android.data.util.UrlStoreImpl
 import com.l2hyunwoo.android.domain.repository.LoginRepository
 import com.l2hyunwoo.android.domain.repository.SignUpRepository
 import com.l2hyunwoo.android.domain.repository.UserReposRepository
@@ -22,14 +24,14 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
-
-const val BASE_URL = "https://api.github.com/"
 
 @Module(
     includes = [
         ApplicationModuleBinds::class,
-        DataStoreModule::class
+        DataStoreModule::class,
+        UrlStoreModule::class
     ]
 )
 class ApplicationModule() {
@@ -42,8 +44,17 @@ class ApplicationModule() {
 
     @Singleton
     @Provides
-    fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder().baseUrl(BASE_URL).client(provideOkHttpClient())
+    @Named("SOPT_BASE_URL")
+    fun provideSoptRetrofit(urlStore: UrlStore): Retrofit {
+        return Retrofit.Builder().baseUrl(urlStore.getSoptBaseUrl()).client(provideOkHttpClient())
+            .addConverterFactory(GsonConverterFactory.create()).build()
+    }
+
+    @Singleton
+    @Provides
+    @Named("GITHUB_BASE_URL")
+    fun provideGithubRetrofit(urlStore: UrlStore): Retrofit {
+        return Retrofit.Builder().baseUrl(urlStore.getGithubBaseUrl()).client(provideOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create()).build()
     }
 }
@@ -84,4 +95,11 @@ class DataStoreModule() {
         cipherToolBox: CipherToolBox,
         dataStore: DataStore<Preferences>
     ) = EncryptedDataStore(dataStore, cipherToolBox)
+}
+
+@Module
+abstract class UrlStoreModule {
+    @Singleton
+    @Binds
+    abstract fun provideUrlStore(urlStore: UrlStoreImpl): UrlStore
 }
