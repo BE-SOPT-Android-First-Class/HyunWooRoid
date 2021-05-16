@@ -1,8 +1,9 @@
-package com.l2hyunwoo.android.data.datasource
+package com.l2hyunwoo.android.data.local
 
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.l2hyunwoo.android.data.datasource.GithubDataSource
 import com.l2hyunwoo.android.data.model.ResponseGithubRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
