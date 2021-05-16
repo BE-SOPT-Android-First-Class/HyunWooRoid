@@ -21,13 +21,19 @@ class SignInViewModel @Inject constructor(
 
     fun login() {
         viewModelScope.launch {
-            val result = loginRepository.login(
-                UserInfo(
-                    id = inputId.value ?: "",
-                    password = inputPassword.value ?: ""
+            runCatching {
+                loginRepository.login(
+                    UserInfo(
+                        id = inputId.value ?: "",
+                        password = inputPassword.value ?: ""
+                    )
                 )
-            )
-            handleMessage(result.message)
+            }.onSuccess {
+                if (it.success) _loginResult.value = Valid
+                else _loginResult.value = Inconsistent
+            }.onFailure {
+                it.printStackTrace()
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package com.l2hyunwoo.android.data.model
 
 import com.google.gson.annotations.SerializedName
+import com.l2hyunwoo.android.data.BaseResponse
 
 data class ResponseSignUp(
     @SerializedName("data")
@@ -14,4 +15,13 @@ data class ResponseSignUp(
         @SerializedName("nickname")
         val nickname: String
     )
+
+    fun toBaseResponse(): BaseResponse<String> {
+        return BaseResponse(
+            data = data.nickname,
+            status = 0,
+            message = message,
+            success = success
+        )
+    }
 }
