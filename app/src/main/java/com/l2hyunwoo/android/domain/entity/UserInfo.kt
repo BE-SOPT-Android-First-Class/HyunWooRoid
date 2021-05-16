@@ -15,4 +15,10 @@ data class UserInfo(
             password = password
         )
     }
+
+    fun toSignInDto(): HashMap<String, String> =
+        hashMapOf(
+            "email" to id,
+            "password" to password
+        )
 }

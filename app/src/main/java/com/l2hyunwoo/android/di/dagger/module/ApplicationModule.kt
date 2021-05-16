@@ -7,7 +7,9 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.l2hyunwoo.android.data.api.SoptApi
 import com.l2hyunwoo.android.data.datasource.GithubDataSource
+import com.l2hyunwoo.android.data.datasource.SoptDataSource
 import com.l2hyunwoo.android.data.local.MockGithubDataSource
+import com.l2hyunwoo.android.data.remote.SoptDataSourceImpl
 import com.l2hyunwoo.android.data.repository.LoginRepositoryImpl
 import com.l2hyunwoo.android.data.repository.SignUpRepositoryImpl
 import com.l2hyunwoo.android.data.repository.UserReposRepositoryImpl
@@ -32,6 +34,7 @@ import javax.inject.Singleton
     includes = [
         ApplicationModuleBinds::class,
         DataStoreModule::class,
+        DataSourceModule::class,
         UrlStoreModule::class,
         ServiceModule::class
     ]
@@ -112,4 +115,11 @@ class ServiceModule {
     @Provides
     fun provideSoptApi(@Named("SOPT_BASE_URL") retrofit: Retrofit): SoptApi =
         retrofit.create(SoptApi::class.java)
+}
+
+@Module
+abstract class DataSourceModule {
+    @Singleton
+    @Binds
+    abstract fun bindSoptDataSource(soptDataSourceImpl: SoptDataSourceImpl): SoptDataSource
 }
