@@ -36,6 +36,13 @@ android {
     kotlinOptions {
         jvmTarget = Versions.jvm_version
     }
+
+    externalNativeBuild {
+        cmake {
+            path("src/main/jni/CMakeLists.txt")
+        }
+    }
+
     buildFeatures {
         dataBinding = true
         viewBinding = true
@@ -88,6 +95,19 @@ dependencies {
     // Retrofit
     implementation(ThirdPartyDependencies.retrofit)
     implementation(ThirdPartyDependencies.retrofitGsonConverter)
+
+    // Reactive Extensions(Rx)
+    implementation(ThirdPartyDependencies.rxJava)
+    implementation(ThirdPartyDependencies.rxAndroid)
+
+    // Androidx Security
+    implementation(AndroidXDependencies.security)
+
+    // Biometric
+    implementation(AndroidXDependencies.biometric)
+
+    // Kotlinx-Serialization
+    implementation(AndroidXDependencies.kotlinxSerialization)
 
     testImplementation(TestDependencies.jUnit)
     androidTestImplementation(TestDependencies.androidTest)

@@ -30,13 +30,16 @@ class SignUpViewModel @Inject constructor(
 
     fun signUp() {
         viewModelScope.launch {
-            signUpRepository.signUp(
-                UserInfo(
-                    id = inputId.value ?: "",
-                    password = inputPassword.value ?: ""
+            runCatching {
+                signUpRepository.signUp(
+                    UserInfo(
+                        id = inputId.value ?: "",
+                        password = inputPassword.value ?: ""
+                    )
                 )
-            )
-            _signUpEvent.call()
+            }.onSuccess {
+                if (it.success) _signUpEvent.call()
+            }.onFailure { it.printStackTrace() }
         }
     }
 
