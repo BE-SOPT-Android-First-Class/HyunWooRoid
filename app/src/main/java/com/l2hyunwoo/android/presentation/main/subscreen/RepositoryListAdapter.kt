@@ -2,6 +2,7 @@ package com.l2hyunwoo.android.presentation.main.subscreen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
@@ -43,23 +44,12 @@ class RepositoryListAdapter : RecyclerView.Adapter<RepositoryViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
         val binding = when (viewType) {
-            HEADER -> DataBindingUtil.inflate<ItemMainRepoHeaderBinding>(
-                layoutInflater,
-                R.layout.item_main_repo_header,
-                parent,
-                false
-            )
-            ITEM -> DataBindingUtil.inflate<ItemMainRepoBinding>(
-                layoutInflater,
-                R.layout.item_main_repo,
-                parent,
-                false
-            )
+            HEADER -> binding<ItemMainRepoHeaderBinding>(parent, R.layout.item_main_repo_header)
+            ITEM -> binding<ItemMainRepoBinding>(parent, R.layout.item_main_repo)
             else -> throw IllegalArgumentException("Error View Type: $viewType")
         }
-        return when(binding) {
+        return when (binding) {
             is ItemMainRepoHeaderBinding -> RepositoryHeaderViewHolder(binding)
             is ItemMainRepoBinding -> RepositoryItemViewHolder(binding)
             else -> throw IllegalArgumentException("Error Binding Type: ${binding.javaClass}")
@@ -77,6 +67,9 @@ class RepositoryListAdapter : RecyclerView.Adapter<RepositoryViewHolder>() {
         repositoryList.addAll(newList)
         notifyDataSetChanged()
     }
+
+    private fun <T : ViewDataBinding> binding(parent: ViewGroup, @LayoutRes layoutRes: Int) =
+        DataBindingUtil.inflate<T>(LayoutInflater.from(parent.context), layoutRes, parent, false)
 
     companion object {
         const val HEADER = 0

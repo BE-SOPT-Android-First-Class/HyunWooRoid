@@ -6,7 +6,7 @@ buildscript {
         maven(url = "https://plugins.gradle.org/m2/")
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:${Versions.gradle_version}")
+        classpath("com.android.tools.build:gradle:4.2.0")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin_version}")
         classpath("org.jlleitschuh.gradle:ktlint-gradle:${Versions.ktlint_version}")
         // classpath(ClassPathDependencies.hilt)

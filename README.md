@@ -35,7 +35,7 @@
 </p>
 
 
-## 1주차 과제 (LEVEL 1, 2, 3 완료)
+## 1주차 과제 (LEVEL 1, 2, 3 완료)/7주차 과제 (LEVEL 1, 2 완료)
 
 ### 생명주기를 Log로 호출하는 법 - LifeCycleObserver를 사용
 
@@ -207,6 +207,58 @@ protected inner class LifeCycleEventLogger(private val className: String) : Life
 ### Log 화면 캡쳐
 
 <img src="https://user-images.githubusercontent.com/54518925/114260300-e4932400-9a0e-11eb-9696-02542c78bab0.png" />
+
+### Thread-Safe한 DataStore 구현
+
+```kotlin
+
+// ApplicationMoudle
+    @Singleton
+    @Provides
+    fun provideDataStore(context: Context): DataStore<Preferences> =
+        PreferenceDataStoreFactory.create { context.preferencesDataStoreFile("GithubDataStore") }
+
+// LoginRepositoryImpl
+
+         withContext(Dispatchers.IO) {
+             if (isAutoLogin()) {
+                 return@withContext BaseResponse(
+                     data = "SUCCESS",
+                     message = "로그인 성공",
+                     status = 200,
+                     success = true
+                 )
+             }
+                 if (!isIdExist()) {
+                     return@withContext BaseResponse(
+                         data = "FAILURE",
+                         message = "Id doesn't exist",
+                         status = 400,
+                         success = false
+                     )
+                 }
+                 if (!isValidUser(userInfo)) {
+                     return@withContext BaseResponse(
+                         data = "FAILURE",
+                         message = "회원정보가 일치하지 않습니다.",
+                         status = 400,
+                         success = false
+                     )
+                 }
+                 return@withContext BaseResponse(
+                     data = "SUCCESS",
+                     message = "로그인 성공",
+                     status = 200,
+                     success = true
+                 )
+             // 로그인 성공 시에 자동로그인 될 수 있게 설정
+             dataStore.edit {
+                 it[KEY_AUTO_LOGIN] = true
+             }
+         }
+```
+
+Dagger2에 DataStore를 필요한 곳에 주입시켜줌으로써 Thread-Safe한 DataStore를 만들어 줌
 
 ## 2주차 과제 (LEVEL 1, LEVEl 2-2 구현)
 

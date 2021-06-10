@@ -2,6 +2,7 @@ package com.l2hyunwoo.android.data.util
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -12,3 +13,4 @@ operator fun <T> DataStore<Preferences>.get(key: Preferences.Key<T>): Flow<T?> {
 
 val KEY_USER_ID = stringPreferencesKey("ID")
 val KEY_USER_PASSWORD = stringPreferencesKey("PASSWORD")
+val KEY_AUTO_LOGIN = booleanPreferencesKey("AUTOLOGIN")
