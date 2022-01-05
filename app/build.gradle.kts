@@ -1,23 +1,23 @@
 plugins {
     id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
+    kotlin("android")
+    kotlin("kapt")
     // id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
 }
 
 android {
-    compileSdkVersion(Apps.compileSdk)
+    compileSdk = Apps.compileSdk
     buildToolsVersion = "30.0.3"
 
     defaultConfig {
         applicationId = Apps.pacakageName
-        minSdkVersion(Apps.minSdk)
-        targetSdkVersion(Apps.targetSdk)
-        versionCode(Apps.versionCode)
-        versionName(Apps.versionName)
+        minSdk = Apps.minSdk
+        targetSdk = Apps.targetSdk
+        versionCode = Apps.versionCode
+        versionName = Apps.versionName
 
-        testInstrumentationRunner("androidx.test.runner.AndroidJUnitRunner")
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
