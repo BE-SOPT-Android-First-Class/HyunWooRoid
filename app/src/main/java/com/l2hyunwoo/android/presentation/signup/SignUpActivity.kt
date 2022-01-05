@@ -4,16 +4,15 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.l2hyunwoo.android.R
 import com.l2hyunwoo.android.base.BindingActivity
 import com.l2hyunwoo.android.databinding.ActivitySignUpBinding
-import dagger.android.AndroidInjection
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignUpActivity : BindingActivity<ActivitySignUpBinding>(R.layout.activity_sign_up) {
+    private val signUpViewModel: SignUpViewModel by viewModels()
 
-    private val signUpViewModel: SignUpViewModel by viewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this

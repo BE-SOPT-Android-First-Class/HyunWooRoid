@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
-    // id("dagger.hilt.android.plugin")
+    id("dagger.hilt.android.plugin")
     id("kotlin-parcelize")
 }
 
@@ -57,8 +57,9 @@ dependencies {
     implementation(AndroidXDependencies.constraintLayout)
 
     // Hilt
-    // implementation(AndroidXDependencies.hilt)
-    // kapt(KaptDependencies.hilt)
+    implementation(AndroidXDependencies.hilt)
+    kapt(KaptDependencies.hilt)
+    kapt(KaptDependencies.hiltAndroid)
 
     // DataStore
     implementation(AndroidXDependencies.dataStore)
@@ -74,11 +75,11 @@ dependencies {
     kapt(KaptDependencies.glideCompiler)
 
     // Dagger2
-    implementation(ThirdPartyDependencies.dagger)
-    implementation(ThirdPartyDependencies.daggerAndroid)
-    implementation(ThirdPartyDependencies.daggerAndroidSupport)
-    kapt(KaptDependencies.dagger)
-    kapt(KaptDependencies.daggerAndroidCompiler)
+//    implementation(ThirdPartyDependencies.dagger)
+//    implementation(ThirdPartyDependencies.daggerAndroid)
+//    implementation(ThirdPartyDependencies.daggerAndroidSupport)
+//    kapt(KaptDependencies.dagger)
+//    kapt(KaptDependencies.daggerAndroidCompiler)
 
     // Navigation
     implementation(AndroidXDependencies.navigation)

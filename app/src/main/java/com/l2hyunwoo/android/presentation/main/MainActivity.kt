@@ -9,7 +9,9 @@ import com.l2hyunwoo.android.databinding.ActivityMainBinding
 import com.l2hyunwoo.android.presentation.signin.SignInActivity
 import com.l2hyunwoo.android.presentation.util.intExtra
 import com.l2hyunwoo.android.presentation.util.toast
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val sample by intExtra(ERROR_CODE)
 

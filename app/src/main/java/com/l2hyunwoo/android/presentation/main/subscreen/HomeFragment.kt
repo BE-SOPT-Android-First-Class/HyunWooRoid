@@ -4,18 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.l2hyunwoo.android.R
 import com.l2hyunwoo.android.base.BindingFragment
 import com.l2hyunwoo.android.databinding.FragmentHomeBinding
 import com.l2hyunwoo.android.presentation.main.HomeViewModel
 import com.l2hyunwoo.android.presentation.util.VerticaltemDecorator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private val homeViewModel: HomeViewModel by viewModel()
+    private val homeViewModel: HomeViewModel by viewModels()
     private val repoListAdapter by lazy { RepositoryListAdapter() }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         super.onCreateView(inflater, container, savedInstanceState)

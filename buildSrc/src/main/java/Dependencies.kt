@@ -43,6 +43,7 @@ object MaterialDesignDependencies {
 
 object KaptDependencies {
     const val hilt = "com.google.dagger:hilt-compiler:${Versions.hilt_version}"
+    const val hiltAndroid = "androidx.hilt:hilt-compiler:1.0.0"
     const val glideCompiler =
         "com.github.bumptech.glide:compiler:${Versions.glide_compiler_version}"
     const val dagger = "com.google.dagger:dagger-compiler:${Versions.dagger_version}"

@@ -9,6 +9,7 @@ import android.security.keystore.KeyProperties.PURPOSE_DECRYPT
 import android.security.keystore.KeyProperties.PURPOSE_ENCRYPT
 import android.util.Base64
 import androidx.core.content.edit
+import dagger.hilt.android.qualifiers.ApplicationContext
 import java.security.KeyStore
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
@@ -17,7 +18,7 @@ import javax.crypto.spec.GCMParameterSpec
 import javax.inject.Inject
 
 class CipherToolBox @Inject constructor(
-    private val context: Context
+    @ApplicationContext private val context: Context
 ) {
     private val provider = "AndroidKeyStore"
 

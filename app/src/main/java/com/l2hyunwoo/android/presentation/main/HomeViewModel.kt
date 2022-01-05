@@ -6,9 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.l2hyunwoo.android.domain.repository.UserReposRepository
 import com.l2hyunwoo.android.presentation.main.subscreen.UIModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class HomeViewModel @Inject constructor(
     private val userReposRepository: UserReposRepository
 ) : ViewModel() {
